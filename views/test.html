@@ -1,0 +1,22 @@
+<!DOCTYPE html>s
+<html>
+   <head><script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+   </head>
+    <body>
+       <h1>Hey socket testing</h1>
+       <button id="generator">Click to generate a request</button>
+    </body>
+    <script>
+       var socket1=io.connect('https://floating-brushlands-52313.herokuapp.com');
+       var socket2=io.connect('https://fast-reef-53121.herokuapp.com');
+       var button=document.getElementById('generator');
+       button.addEventListener('click',function(){
+          socket1.emit("request",{msg:"A new request is generated"});
+       })
+       //socket1.on('successfully_accpeted',data=>{console.log(data)});
+       socket2.on("request_accepted_driver",(data)=>{
+          console.log(data);
+         socket1.emit("request_accepted_bydriver",data)
+      });
+    </script>
+</html>

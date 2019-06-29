@@ -1,0 +1,15 @@
+    
+        <script src="https://checkout.stripe.com/checkout.js" defer></script>
+        <script>
+            var weight='<%=weight%>'
+            var height='<%=height%>'
+            var length='<%=length%>'
+            var width='<%=width%>'
+            var order_id='<%=order_id%>'
+            var stripekey='<%= stripePublicKey%>';
+            var charge='<%=charge%>';
+            var amount=weight*charge*height*length*width*0.01;
+            
+        </script>
+        <script src="pay.js" defer></script>
+    
